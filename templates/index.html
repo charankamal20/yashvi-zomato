@@ -1,57 +1,130 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Total Data Science</title>
+  <title>Zomato ML Project</title>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
 
 <body>
-
-<img src=
-"https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/news14109.jpg"
-         alt="zomato image", width="400", height="150", style="float:left">
-
-<img src=
-https://totaldatascience.com/wp-content/uploads/2019/10/TOTAL-1.png"
-         alt="zomato image", width="200", height="70", style="float:right">
-
+<div class="logo">
+<img src="https://logos-world.net/wp-content/uploads/2020/12/Zomato-Logo-2015.png" alt="zomato image" style="margin-left: 50rem;" width= "200" height="100" style="float:left">
+</div>
 <style>
 body {
-  background-image: url("https://images.pexels.com/photos/952356/pexels-photo-952356.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+  background-image: url("https://www.zomato.com/webroutes/zoomBackgrounds/downloadImage?title=Pizza");
   background-position: 200%;
   background-size: cover;
 }
 </style>
 
+<div class="login">
+    <h1>Predict Zomato Restaurant Ratings</h1>
 
-
- <div class="login">
-	<h1>Predict Zomato Restaurant Ratings</h1>
-
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="online_order" placeholder="Order Online" required="required" />
-        <input type="text" name="book_table" placeholder="Book Table" required="required" />
-		<input type="text" name="votes" placeholder="Votes" required="required" />
-        <input type="text" name="location" placeholder="Location" required="required" />
-        <input type="text" name="rest_type" placeholder="Restaurant Type" required="required" />
-        <input type="text" name="cuisines" placeholder="Cuisines" required="required" />
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <p>Online Order</p>
+        <select name="online_order">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <p>Book Table</p>
+        <select name="book_table">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <p>Votes</p>
+        <input type="text" name="votes" placeholder="Votes" required="required" />
+        <p>Location</p>
+        <select name="location">
+            <option value="Banashankari">Banashankari</option>
+            <option value="Bannerghatta Road">Bannerghatta Road</option>
+            <option value="Basavanagudi">Basavanagudi</option>
+            <option value="Bellandur">Bellandur</option>
+            <option value="Brigade Road">Brigade Road</option>
+            <option value="Brookefield">Brookefield</option>
+            <option value="BTM">BTM</option>
+            <option value="Church Street">Church Street</option>
+            <option value="Electronic City">Electronic City</option>
+            <option value="Frazer Town">Frazer Town</option>
+            <option value="HSR">HSR</option>
+            <option value="Indiranagar">Indiranagar</option>
+            <option value="Jayanagar">Jayanagar</option>
+            <option value="JP Nagar">JP Nagar</option>
+            <option value="Kalyan Nagar">Kalyan Nagar</option>
+            <option value="Kammanahalli">Kammanahalli</option>
+            <option value="Koramangala 4th Block">Koramangala 4th Block</option>
+            <option value="Koramangala 5th Block">Koramangala 5th Block</option>
+            <option value="Koramangala 6th Block">Koramangala 6th Block</option>
+            <option value="Koramangala 7th Block">Koramangala 7th Block</option>
+            <option value="Lavelle Road">Lavelle Road</option>
+            <option value="Malleshwaram">Malleshwaram</option>
+            <option value="Marathahalli">Marathahalli</option>
+            <option value="MG Road">MG Road</option>
+            <option value="New BEL Road">New BEL Road</option>
+            <option value="Old Airport Road">Old Airport Road</option>
+            <option value="Rajajinagar">Rajajinagar</option>
+            <option value="Residency Road">Residency Road</option>
+            <option value="Sarjapur Road">Sarjapur Road</option>
+            <option value="Whitefield">Whitefield</option>
+        </select>
+        <p>Restaurant Type</p>
+        <select name="rest_type">
+            <option value="Casual Dining">Casual Dining</option>
+            <option value="Quick Bites">Quick Bites</option>
+            <option value="Cafe">Cafe</option>
+            <option value="Beverage Shop">Beverage Shop</option>
+            <option value="Kiosk">Kiosk</option>
+            <option value="Dhaba">Dhaba</option>
+            <option value="Delivery">Delivery</option>
+            <option value="Bakery">Bakery</option>
+            <option value="Pub">Pub</option>
+        </select>
+        <p>Cuisine</p>
+        <select name="cuisines">
+            <option value="North Indian, Mughlai, Chinese">North Indian, Mughlai, Chinese</option>
+            <option value="Cafe, Mexican, Italian">Cafe, Mexican, Italian</option>
+            <option value="North Indian, Rajasthani">North Indian, Rajasthani</option>
+            <option value="Cafe, Continental">Cafe, Continental</option>
+            <option value="Cafe, Mexican, Italian">Cafe, Mexican, Italian</option>
+            <option value="Desserts, Beverages, Ice Cream">Desserts, Beverages, Ice Cream</option>
+            <option value="Pizza, Italian, Salad">Pizza, Italian, Salad</option>
+            <option value="Asian, Continental, European">Asian, Continental, European</option>
+            <option value="Finger Food">Finger Food</option>
+            <option value="North Indian">North Indian</option>
+            <option value="South Indian">South Indian</option>
+        </select>
+        <p>Cost</p>
         <input type="text" name="cost" placeholder="Cost" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
 
-   <br>
-   <br>
-   {{ prediction_text }}
+    <br>
+    <br>
+    {{ prediction_text }}
+</div>
 
- </div>
+<div class="project-info">
+  <p>
+    Our project harnesses the power of Machine Learning (ML) integrated with Flask, a Python web framework, to predict Zomato restaurant ratings.
+    By inputting common factors such as location, restaurant type, and cost for two people, our model generates accurate predictions based on a
+    comprehensive analysis of various data points.
+
+This predictive model serves as a valuable tool for businesses in the food industry, enabling them to gain insights into how different factors
+influence their restaurant ratings. By leveraging this technology, businesses can make informed decisions to enhance their offerings, optimize
+customer satisfaction, and ultimately elevate their online presence and reputation.
+
+Feel free to adjust any details as needed!
+  </p>
+</div>
+
+<!-- Designed by Yashvi -->
+<div class="designer">
+  <h1>Submitted by : Yashvi &nbsp &nbsp &nbsp &nbsp Roll no : CO21370</h1>
+</div>
 
 
 </body>
